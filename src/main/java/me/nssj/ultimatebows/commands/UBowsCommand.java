@@ -2,6 +2,7 @@ package me.nssj.ultimatebows.commands;
 
 import me.nssj.ultimatebows.bows.Bow;
 
+import me.nssj.ultimatebows.bows.BowsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,8 +15,6 @@ import org.bukkit.util.StringUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static me.nssj.ultimatebows.bows.Bow.*;
 
 public class UBowsCommand implements CommandExecutor, TabCompleter {
 
@@ -30,12 +29,16 @@ public class UBowsCommand implements CommandExecutor, TabCompleter {
             }
 
             if (args[0].equalsIgnoreCase("give")) {
-                Bow bow = getBowByName(args[1]);
+                Bow bow = BowsManager.getBowByName(args[1]);
 
-                if (getBows().contains(bow)) {
-                    ItemStack bowItem = getBowItem(bow);
+                if (BowsManager.getBows().contains(bow)) {
+                    ItemStack bowItem = BowsManager.getBowItem(bow);
                     player.getInventory().addItem(bowItem);
+                } else {
+                    player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Syntax: /ubows give <bowName>");
                 }
+            } else {
+                player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Syntax: /ubows give <bowName>");
             }
         }
 
@@ -47,7 +50,7 @@ public class UBowsCommand implements CommandExecutor, TabCompleter {
         if (args.length == 1) {
             return StringUtil.copyPartialMatches(args[0], Arrays.asList("give"), new ArrayList<>());
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
-            return StringUtil.copyPartialMatches(args[1], Arrays.asList("destructionBow", "playerBow"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[1], Arrays.asList("destructionBow", "playerBow", "teleportBow", "explosiveBow", "waterBow", "lavaBow"), new ArrayList<>());
         }
         return null;
     }
