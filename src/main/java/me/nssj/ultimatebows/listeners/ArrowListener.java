@@ -36,6 +36,7 @@ public class ArrowListener implements Listener {
                 arrow.remove();
             } else if (item.isSimilar(BowsManager.getBowItem(BowsManager.getBowByName("lavaBow")))) {
                 if (e.getHitBlock() != null) e.getHitBlock().setType(Material.LAVA);
+                arrow.remove();
             }
         }
     }
