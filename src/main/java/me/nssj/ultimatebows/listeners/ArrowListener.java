@@ -27,8 +27,10 @@ public class ArrowListener implements Listener {
             } else if (item.isSimilar(BowsManager.getBowItem(BowsManager.getBowByName("teleportBow")))) {
                 player.teleport(arrow);
             } else if (item.isSimilar(BowsManager.getBowItem(BowsManager.getBowByName("explosiveBow")))) {
-                e.getHitBlock().getWorld().createExplosion(e.getHitBlock().getLocation(), 3.0f, true);
-                arrow.remove();
+                if (e.getHitBlock() != null) {
+                    e.getHitBlock().getWorld().createExplosion(e.getHitBlock().getLocation(), 3.0f, true);
+                    arrow.remove();
+                }
             } else if (item.isSimilar(BowsManager.getBowItem(BowsManager.getBowByName("waterBow")))) {
                 if (e.getHitBlock() != null) e.getHitBlock().setType(Material.WATER);
                 arrow.remove();

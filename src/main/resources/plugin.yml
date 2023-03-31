@@ -8,5 +8,5 @@ commands:
   ubows:
     description: Gives the player a custom bow
     usage: /<command>
-    permission: ubows.*
+    permission: ultimatebows.give
 

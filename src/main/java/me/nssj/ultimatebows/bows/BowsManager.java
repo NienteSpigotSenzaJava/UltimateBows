@@ -21,7 +21,7 @@ public class BowsManager {
     }
 
     public static Bow getBowByName(String name) {
-        for (Bow bow : BowsManager.getBows()) {
+        for (Bow bow : getBows()) {
             if (ChatColor.stripColor(bow.getName().replaceAll("\\s+", "")).equalsIgnoreCase(name)) {
                 return bow;
             }
