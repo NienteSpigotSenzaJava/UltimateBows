@@ -1,12 +1,9 @@
 package me.nssj.ultimatebows.listeners;
 
-import com.sun.tools.javac.jvm.Items;
-import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowsManager;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
