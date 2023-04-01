@@ -12,6 +12,8 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 
+import java.util.Objects;
+
 public final class ArrowListener implements Listener {
 
     private final BowManager bowManager;
@@ -24,18 +26,18 @@ public final class ArrowListener implements Listener {
 
 
     @EventHandler
-    public void onProjectileHit(final ProjectileHitEvent e) {
+    public void onProjectileHit(final ProjectileHitEvent event) {
 
-        if (e.getEntity() instanceof Arrow && e.getEntity().getShooter() instanceof Player) {
+        if (event.getEntity() instanceof Arrow && event.getEntity().getShooter() instanceof Player) {
 
-            Arrow arrow = (Arrow) e.getEntity();
+            Arrow arrow = (Arrow) event.getEntity();
             Player player = (Player) arrow.getShooter();
 
             ItemStack item = player.getInventory().getItemInMainHand();
 
             if (isBow("destructionBow", item)) {
 
-                destructionBow(e.getHitBlock());
+                destructionBow(event.getHitBlock(), arrow);
 
             } else if (isBow("teleportBow", item)) {
 
@@ -43,15 +45,19 @@ public final class ArrowListener implements Listener {
 
             } else if (isBow("explosiveBow", item)) {
 
-                explosiveBow(e.getHitBlock(), arrow);
+                explosiveBow(event.getHitBlock(), arrow);
 
             } else if (isBow("waterBow", item)) {
 
-                waterBow(e.getHitBlock(), arrow);
+                waterBow(event.getHitBlock(), arrow);
 
             } else if (isBow("lavaBow", item)) {
 
-                lavaBow(e.getHitBlock(), arrow);
+                lavaBow(event.getHitBlock(), arrow);
+
+            } else if (isBow("playerBow", item)) {
+
+                arrow.remove();
 
             }
 
@@ -60,14 +66,14 @@ public final class ArrowListener implements Listener {
     }
 
     @EventHandler
-    public void onProjectileLaunch(final ProjectileLaunchEvent e) {
+    public void onProjectileLaunch(final ProjectileLaunchEvent event) {
 
-        if (e.getEntity() instanceof Arrow && e.getEntity().getShooter() instanceof Player) {
+        if (event.getEntity() instanceof Arrow && event.getEntity().getShooter() instanceof Player) {
 
-            Arrow arrow = (Arrow) e.getEntity();
-            Player player = (Player) arrow.getShooter();
+            final Arrow arrow = (Arrow) event.getEntity();
+            final Player player = (Player) arrow.getShooter();
 
-            ItemStack item = player.getInventory().getItemInMainHand();
+            final ItemStack item = player.getInventory().getItemInMainHand();
 
             if (isBow("playerBow", item)) {
 
@@ -79,25 +85,32 @@ public final class ArrowListener implements Listener {
 
     }
 
-    private boolean isBow(String name, ItemStack item) {
 
-        return item.getItemMeta().getLore().equals(bowManager.getBowItem(bowManager.getBow(name)).getItemMeta().getLore());
+    private boolean isBow(final String name, final ItemStack item) {
 
-    }
-
-    private void destructionBow(Block hitBlock) {
-
-        hitBlock.breakNaturally();
+        return Objects.equals(item.getItemMeta().getLore(), bowManager.getBowItem(bowManager.getBow(name)).getItemMeta().getLore());
 
     }
 
-    private void teleportBow(Player player, Arrow arrow) {
+    private void destructionBow(final Block hitBlock, final Arrow arrow) {
+
+        if (hitBlock != null) {
+
+            hitBlock.breakNaturally();
+            arrow.remove();
+
+        }
+
+    }
+
+    private void teleportBow(final Player player, final Arrow arrow) {
 
         player.teleport(arrow);
+        arrow.remove();
 
     }
 
-    private void explosiveBow(Block hitBlock, Arrow arrow) {
+    private void explosiveBow(final Block hitBlock, final Arrow arrow) {
 
         if (hitBlock != null) {
 
@@ -108,7 +121,7 @@ public final class ArrowListener implements Listener {
 
     }
 
-    private void waterBow(Block hitBlock, Arrow arrow) {
+    private void waterBow(final Block hitBlock, final Arrow arrow) {
 
         if (hitBlock != null) {
 
@@ -119,7 +132,7 @@ public final class ArrowListener implements Listener {
 
     }
 
-    private void lavaBow(Block hitBlock, Arrow arrow) {
+    private void lavaBow(final Block hitBlock, final Arrow arrow) {
 
         if (hitBlock != null) {
 
@@ -130,7 +143,7 @@ public final class ArrowListener implements Listener {
 
     }
 
-    private void playerBow(Arrow arrow, Player player) {
+    private void playerBow(final Arrow arrow, final Player player) {
 
         arrow.addPassenger(player);
 
