@@ -56,11 +56,4 @@ public final class UltimateBows extends JavaPlugin {
 
     }
 
-
-    public BowManager getBowManager() {
-
-        return bowManager;
-
-    }
-
 }
