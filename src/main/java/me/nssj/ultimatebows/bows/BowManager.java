@@ -19,15 +19,10 @@ public final class BowManager {
 
     }
 
-    public List<Bow> getBows() {
 
-        return bows;
+    public Bow getBow(String name) {
 
-    }
-
-    public Bow getBowByName(String name) {
-
-        for (Bow bow : getBows()) {
+        for (Bow bow : bows) {
 
             if (ChatColor.stripColor(bow.getName().replaceAll("\\s+", "")).equalsIgnoreCase(name)) {
 

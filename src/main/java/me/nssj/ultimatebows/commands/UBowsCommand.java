@@ -38,16 +38,15 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
             if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
 
-                final Bow bow = bowManager.getBowByName(args[1]);
+                final Bow bow = bowManager.getBow(args[1]);
 
-                if (bowManager.getBows().contains(bow)) {
+                if (bow != null) {
 
-                    ItemStack bowItem = bowManager.getBowItem(bow);
-                    player.getInventory().addItem(bowItem);
+                    player.getInventory().addItem(bowManager.getBowItem(bow));
 
                 } else {
 
-                    player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "Syntax: /ubows give <bowName>"));
+                    player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "The bow " + args[1] + " doesn't exist!"));
 
                 }
 

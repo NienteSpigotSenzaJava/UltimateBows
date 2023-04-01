@@ -73,7 +73,7 @@ public class ArrowListener implements Listener {
 
     private boolean isBow(String name, ItemStack item) {
 
-        return item.getItemMeta().getLore().equals(bowManager.getBowItem(bowManager.getBowByName(name)).getItemMeta().getLore());
+        return item.getItemMeta().getLore().equals(bowManager.getBowItem(bowManager.getBow(name)).getItemMeta().getLore());
 
     }
 
