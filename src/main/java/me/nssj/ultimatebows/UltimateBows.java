@@ -13,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class UltimateBows extends JavaPlugin {
 
     private ConsoleCommandSender console;
+    
     private PluginManager pluginManager;
 
     @Override
@@ -21,7 +22,6 @@ public final class UltimateBows extends JavaPlugin {
         console = getServer().getConsoleSender();
 
         pluginManager = getServer().getPluginManager();
-
         pluginManager.registerEvents(new ArrowListener(), this);
 
         getCommand("ubows").setExecutor(new UBowsCommand());
