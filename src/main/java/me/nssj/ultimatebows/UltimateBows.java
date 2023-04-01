@@ -5,17 +5,20 @@ import me.nssj.ultimatebows.commands.UBowsCommand;
 import me.nssj.ultimatebows.listeners.ArrowListener;
 
 import org.bukkit.ChatColor;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class UltimateBows extends JavaPlugin {
 
+    private ConsoleCommandSender console;
+    private PluginManager pluginManager;
+
     @Override
     public void onEnable() {
-        PluginManager plm = getServer().getPluginManager();
-        System.out.println("UltimateBows has started.");
 
-        plm.registerEvents(new ArrowListener(), this);
+        pluginManager.registerEvents(new ArrowListener(), this);
+
         getCommand("ubows").setExecutor(new UBowsCommand());
 
         new Bow(ChatColor.RED + "" + ChatColor.BOLD + "Destruction Bow", new String[]{"This bow destroys everything."});
@@ -24,6 +27,15 @@ public final class UltimateBows extends JavaPlugin {
         new Bow(ChatColor.GOLD + "" + ChatColor.BOLD + "Explosive Bow", new String[]{"This bow shoots explosive arrows."});
         new Bow(ChatColor.BLUE + "" + ChatColor.BOLD + "Water Bow", new String[]{"This bow shoots arrows that make water."});
         new Bow(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Lava Bow", new String[]{"This bow shoots arrows that make lava."});
+
+        console.sendMessage("UltimateBows was enabled successfully!");
+
+    }
+
+    @Override
+    public void onDisable() {
+
+        console.sendMessage("UltimateBows was disabled!");
 
     }
 
