@@ -5,12 +5,13 @@ public final class Bow {
     private final String name;
     private final String[] description;
 
-    public Bow(String name, String[] description) {
+    public Bow(final String name, final String[] description) {
 
         this.name = name;
         this.description = description;
 
     }
+
 
     public String getName() {
 
