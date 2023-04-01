@@ -2,6 +2,7 @@ package me.nssj.ultimatebows.listeners;
 
 import me.nssj.ultimatebows.bows.BowManager;
 
+import me.nssj.ultimatebows.utils.MobType;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -54,6 +55,10 @@ public final class ArrowListener implements Listener {
             } else if (isBow("lavaBow", item)) {
 
                 lavaBow(event.getHitBlock(), arrow);
+
+            } else if (isBow("mobBow", item)) {
+
+                mobBow(arrow);
 
             } else if (isBow("playerBow", item)) {
 
@@ -140,6 +145,13 @@ public final class ArrowListener implements Listener {
             arrow.remove();
 
         }
+
+    }
+
+    private void mobBow(final Arrow arrow) {
+
+        arrow.getWorld().spawnEntity(arrow.getLocation(), MobType.values()[(int) (Math.random() * (MobType.values().length))].getEntityType());
+        arrow.remove();
 
     }
 

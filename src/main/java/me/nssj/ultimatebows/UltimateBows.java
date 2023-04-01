@@ -35,7 +35,8 @@ public final class UltimateBows extends JavaPlugin {
                         new Bow(Util.getColorizedText(ChatColor.YELLOW, true, "Teleport Bow"), new String[]{"This bow shoots arrows that teleports", "you to their position."}),
                         new Bow(Util.getColorizedText(ChatColor.GOLD, true, "Explosive Bow"), new String[]{"This bow shoots explosive arrows."}),
                         new Bow(Util.getColorizedText(ChatColor.BLUE, true, "Water Bow"), new String[]{"This bow shoots arrows that make water."}),
-                        new Bow(Util.getColorizedText(ChatColor.DARK_RED, true, "Lava Bow"), new String[]{"This bow shoots arrows that make lava."})
+                        new Bow(Util.getColorizedText(ChatColor.DARK_RED, true, "Lava Bow"), new String[]{"This bow shoots arrows that make lava."}),
+                        new Bow(Util.getColorizedText(ChatColor.DARK_GREEN, true, "Mob Bow"), new String[]{"This bow shoots mob spawning arrows."})
                 )
 
         ));
