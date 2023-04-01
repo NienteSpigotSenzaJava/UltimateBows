@@ -1,6 +1,5 @@
 package me.nssj.ultimatebows.bows;
 
-
 public class Bow {
     private final String name;
     private final String[] description;
