@@ -18,6 +18,10 @@ public final class UltimateBows extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        console = getServer().getConsoleSender();
+
+        pluginManager = getServer().getPluginManager();
+
         pluginManager.registerEvents(new ArrowListener(), this);
 
         getCommand("ubows").setExecutor(new UBowsCommand());
