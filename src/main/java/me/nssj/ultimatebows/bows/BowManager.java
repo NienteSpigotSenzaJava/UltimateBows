@@ -9,27 +9,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BowsManager {
+public final class BowManager {
+
     private static final List<Bow> bows = new ArrayList<>();
 
     public static void addBow(Bow bow) {
+
         bows.add(bow);
+
     }
 
     public static List<Bow> getBows() {
+
         return bows;
+
     }
 
     public static Bow getBowByName(String name) {
+
         for (Bow bow : getBows()) {
+
             if (ChatColor.stripColor(bow.getName().replaceAll("\\s+", "")).equalsIgnoreCase(name)) {
+
                 return bow;
+
             }
         }
+
         return null;
+
     }
 
     public static ItemStack getBowItem(Bow bow) {
+
         ItemStack item = new ItemStack(Material.BOW);
         ItemMeta meta = item.getItemMeta();
 
@@ -41,6 +53,7 @@ public class BowsManager {
         item.setItemMeta(meta);
 
         return item;
+
     }
 
 }

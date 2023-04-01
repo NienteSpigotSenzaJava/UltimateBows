@@ -1,7 +1,7 @@
 package me.nssj.ultimatebows.commands;
 
 import me.nssj.ultimatebows.bows.Bow;
-import me.nssj.ultimatebows.bows.BowsManager;
+import me.nssj.ultimatebows.bows.BowManager;
 
 import me.nssj.ultimatebows.utils.Util;
 import org.bukkit.ChatColor;
@@ -29,11 +29,11 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
             if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
 
-                final Bow bow = BowsManager.getBowByName(args[1]);
+                final Bow bow = BowManager.getBowByName(args[1]);
 
-                if (BowsManager.getBows().contains(bow)) {
+                if (BowManager.getBows().contains(bow)) {
 
-                    ItemStack bowItem = BowsManager.getBowItem(bow);
+                    ItemStack bowItem = BowManager.getBowItem(bow);
                     player.getInventory().addItem(bowItem);
 
                 } else {
