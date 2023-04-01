@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 
 public final class Util {
 
-    public static String getColorizedText(ChatColor color, boolean bold, String text) {
+    public static String getColorizedText(final ChatColor color, final boolean bold, final String text) {
 
         final StringBuilder colorizedText = new StringBuilder();
 
