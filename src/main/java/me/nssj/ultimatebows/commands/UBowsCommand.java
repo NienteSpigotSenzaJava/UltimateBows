@@ -21,11 +21,12 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
     private final BowManager bowManager;
 
-    public UBowsCommand(BowManager bowManager) {
+    public UBowsCommand(final BowManager bowManager) {
 
         this.bowManager = bowManager;
 
     }
+
 
     @Override
     public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
