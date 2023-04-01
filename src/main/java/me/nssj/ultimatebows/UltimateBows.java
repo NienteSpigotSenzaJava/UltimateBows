@@ -4,6 +4,7 @@ import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.commands.UBowsCommand;
 import me.nssj.ultimatebows.listeners.ArrowListener;
 
+import me.nssj.ultimatebows.utils.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginManager;
@@ -21,12 +22,12 @@ public final class UltimateBows extends JavaPlugin {
 
         getCommand("ubows").setExecutor(new UBowsCommand());
 
-        new Bow(ChatColor.RED + "" + ChatColor.BOLD + "Destruction Bow", new String[]{"This bow destroys everything."});
-        new Bow(ChatColor.AQUA + "" + ChatColor.BOLD + "Player Bow", new String[]{"This bow shoots arrows that bring", "you with them."});
-        new Bow(ChatColor.YELLOW + "" + ChatColor.BOLD + "Teleport Bow", new String[]{"This bow shoots arrows that teleports", "you at their position."});
-        new Bow(ChatColor.GOLD + "" + ChatColor.BOLD + "Explosive Bow", new String[]{"This bow shoots explosive arrows."});
-        new Bow(ChatColor.BLUE + "" + ChatColor.BOLD + "Water Bow", new String[]{"This bow shoots arrows that make water."});
-        new Bow(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Lava Bow", new String[]{"This bow shoots arrows that make lava."});
+        new Bow(Util.getColorizedText(ChatColor.RED, true, "Destruction Bow"), new String[]{"This bow destroys everything."});
+        new Bow(Util.getColorizedText(ChatColor.AQUA, true, "Player Bow"), new String[]{"This bow shoots arrows that bring", "you with them."});
+        new Bow(Util.getColorizedText(ChatColor.YELLOW, true, "Teleport Bow"), new String[]{"This bow shoots arrows that teleports", "you at their position."});
+        new Bow(Util.getColorizedText(ChatColor.GOLD, true, "Explosive Bow"), new String[]{"This bow shoots explosive arrows."});
+        new Bow(Util.getColorizedText(ChatColor.BLUE, true, "Water Bow"), new String[]{"This bow shoots arrows that make water."});
+        new Bow(Util.getColorizedText(ChatColor.DARK_RED, true, "Lava Bow"), new String[]{"This bow shoots arrows that make lava."});
 
         console.sendMessage("UltimateBows was enabled successfully!");
 
