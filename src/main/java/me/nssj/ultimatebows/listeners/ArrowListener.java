@@ -13,7 +13,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 
-public class ArrowListener implements Listener {
+public final class ArrowListener implements Listener {
 
     private final BowManager bowManager;
 
@@ -23,9 +23,12 @@ public class ArrowListener implements Listener {
 
     }
 
+
     @EventHandler
-    public void onProjectileHit(ProjectileHitEvent e) {
+    public void onProjectileHit(final ProjectileHitEvent e) {
+
         if (e.getEntity() instanceof Arrow && e.getEntity().getShooter() instanceof Player) {
+
             Arrow arrow = (Arrow) e.getEntity();
             Player player = (Player) arrow.getShooter();
 
@@ -52,12 +55,16 @@ public class ArrowListener implements Listener {
                 lavaBow(e.getHitBlock(), arrow);
 
             }
+
         }
+
     }
 
     @EventHandler
-    public void onProjectileLaunch(ProjectileLaunchEvent e) {
+    public void onProjectileLaunch(final ProjectileLaunchEvent e) {
+
         if (e.getEntity() instanceof Arrow && e.getEntity().getShooter() instanceof Player) {
+
             Arrow arrow = (Arrow) e.getEntity();
             Player player = (Player) arrow.getShooter();
 
@@ -68,7 +75,9 @@ public class ArrowListener implements Listener {
                 playerBow(arrow, player);
 
             }
+
         }
+
     }
 
     private boolean isBow(String name, ItemStack item) {
