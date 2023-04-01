@@ -1,6 +1,5 @@
 package me.nssj.ultimatebows.listeners;
 
-import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowManager;
 
 import org.bukkit.block.Block;
