@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class UBowsCommand implements CommandExecutor, TabCompleter {
+public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
