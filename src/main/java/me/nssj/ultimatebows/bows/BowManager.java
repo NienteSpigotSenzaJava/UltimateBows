@@ -20,9 +20,9 @@ public final class BowManager {
     }
 
 
-    public Bow getBow(String name) {
+    public Bow getBow(final String name) {
 
-        for (Bow bow : bows) {
+        for (final Bow bow : bows) {
 
             if (ChatColor.stripColor(bow.getName().replaceAll("\\s+", "")).equalsIgnoreCase(name)) {
 
@@ -35,16 +35,14 @@ public final class BowManager {
 
     }
 
-    public ItemStack getBowItem(Bow bow) {
+    public ItemStack getBowItem(final Bow bow) {
 
-        ItemStack item = new ItemStack(Material.BOW);
-        ItemMeta meta = item.getItemMeta();
+        final ItemStack item = new ItemStack(Material.BOW);
+        final ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName(bow.getName());
-        meta.setCustomModelData(6969);
-        ArrayList<String> lore = new ArrayList<>(Arrays.asList(bow.getDescription()));
+        meta.setLore(new ArrayList<>(Arrays.asList(bow.getDescription())));
 
-        meta.setLore(lore);
         item.setItemMeta(meta);
 
         return item;
