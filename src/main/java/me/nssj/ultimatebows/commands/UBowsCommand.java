@@ -47,13 +47,13 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
                 } else {
 
-                    player.sendMessage(Util.getColorizedText(ChatColor.RED,true,"Syntax: /ubows give <bowName>"));
+                    player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "Syntax: /ubows give <bowName>"));
 
                 }
 
             } else {
 
-                player.sendMessage(Util.getColorizedText(ChatColor.RED,true,"Syntax: /ubows give <bowName>"));
+                player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "Syntax: /ubows give <bowName>"));
 
             }
 
