@@ -6,7 +6,7 @@ authors: [nSSj_]
 description: Add different types of bows into your Minecraft server.
 commands:
   ubows:
-    description: Gives the player a custom bow
+    description: Gives the player a custom bow.
     usage: /<command>
     permission: ultimatebows.give
 
