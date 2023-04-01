@@ -10,8 +10,6 @@ public final class Bow {
         this.name = name;
         this.description = description;
 
-        BowManager.addBow(this);
-
     }
 
     public String getName() {

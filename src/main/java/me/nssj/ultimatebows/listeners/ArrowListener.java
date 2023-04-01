@@ -1,5 +1,6 @@
 package me.nssj.ultimatebows.listeners;
 
+import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowManager;
 
 import org.bukkit.block.Block;
@@ -13,6 +14,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 
 public class ArrowListener implements Listener {
+
+    private final BowManager bowManager;
+
+    public ArrowListener(final BowManager bowManager) {
+
+        this.bowManager = bowManager;
+
+    }
 
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent e) {
@@ -64,7 +73,7 @@ public class ArrowListener implements Listener {
 
     private boolean isBow(String name, ItemStack item) {
 
-        return item.getItemMeta().getLore().equals(BowManager.getBowItem(BowManager.getBowByName(name)).getItemMeta().getLore());
+        return item.getItemMeta().getLore().equals(bowManager.getBowItem(bowManager.getBowByName(name)).getItemMeta().getLore());
 
     }
 

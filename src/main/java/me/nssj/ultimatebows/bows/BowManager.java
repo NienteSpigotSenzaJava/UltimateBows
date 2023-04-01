@@ -11,21 +11,21 @@ import java.util.List;
 
 public final class BowManager {
 
-    private static final List<Bow> bows = new ArrayList<>();
+    private final List<Bow> bows;
 
-    public static void addBow(Bow bow) {
+    public BowManager(final ArrayList<Bow> bows) {
 
-        bows.add(bow);
+        this.bows = bows;
 
     }
 
-    public static List<Bow> getBows() {
+    public List<Bow> getBows() {
 
         return bows;
 
     }
 
-    public static Bow getBowByName(String name) {
+    public Bow getBowByName(String name) {
 
         for (Bow bow : getBows()) {
 
@@ -40,7 +40,7 @@ public final class BowManager {
 
     }
 
-    public static ItemStack getBowItem(Bow bow) {
+    public ItemStack getBowItem(Bow bow) {
 
         ItemStack item = new ItemStack(Material.BOW);
         ItemMeta meta = item.getItemMeta();

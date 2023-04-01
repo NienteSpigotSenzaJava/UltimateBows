@@ -1,5 +1,6 @@
 package me.nssj.ultimatebows.commands;
 
+import me.nssj.ultimatebows.UltimateBows;
 import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowManager;
 
@@ -20,6 +21,14 @@ import java.util.List;
 
 public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
+    private final BowManager bowManager;
+
+    public UBowsCommand(BowManager bowManager) {
+
+        this.bowManager = bowManager;
+
+    }
+
     @Override
     public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
 
@@ -29,11 +38,11 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
             if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
 
-                final Bow bow = BowManager.getBowByName(args[1]);
+                final Bow bow = bowManager.getBowByName(args[1]);
 
-                if (BowManager.getBows().contains(bow)) {
+                if (bowManager.getBows().contains(bow)) {
 
-                    ItemStack bowItem = BowManager.getBowItem(bow);
+                    ItemStack bowItem = bowManager.getBowItem(bow);
                     player.getInventory().addItem(bowItem);
 
                 } else {
