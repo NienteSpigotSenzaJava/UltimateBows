@@ -10,7 +10,7 @@ It has only one command which is ```/ubows give <bowName>```, the permission for
 
 ## Bows
 
-These are the different bows (write them like this in the command, for example ```/ubows give playerBow```)
+These are the different bows (write them like this in the command, for example ```/ubows give playerBow```).
 * ```destructionBow```
 * ```playerBow```
 * ```teleportBow```
@@ -21,6 +21,8 @@ These are the different bows (write them like this in the command, for example `
 * ```potionBow```
 * ```waterBow```
 * ```lavaBow```
+
+You can also type ```all``` to get every bow, for example ```/ubows give all```.
 
 ## Compatibility
 I only tested it on Minecraft 1.19.2, didn't test other versions, by the way it should work on most versions since it only adds some bows and effects.

@@ -37,15 +37,27 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
             if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
 
-                final Bow bow = bowManager.getBow(args[1]);
+                if (args[1].equalsIgnoreCase("all")) {
 
-                if (bow != null) {
+                    for (final Bow bow : bowManager.getBows()) {
 
-                    player.getInventory().addItem(bowManager.getBowItem(bow));
+                        player.getInventory().addItem(bowManager.getBowItem(bow));
+
+                    }
 
                 } else {
 
-                    player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "The bow " + args[1] + " doesn't exist!"));
+                    final Bow bow = bowManager.getBow(args[1]);
+
+                    if (bow != null) {
+
+                        player.getInventory().addItem(bowManager.getBowItem(bow));
+
+                    } else {
+
+                        player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "The bow " + args[1] + " doesn't exist!"));
+
+                    }
 
                 }
 
@@ -70,7 +82,7 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
 
-            return StringUtil.copyPartialMatches(args[1], Arrays.asList("destructionBow", "playerBow", "teleportBow", "explosiveBow", "waterBow", "lavaBow", "lightningBow", "mobBow", "fireBow", "potionBow"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[1], Arrays.asList("all", "destructionBow", "playerBow", "teleportBow", "explosiveBow", "waterBow", "lavaBow", "lightningBow", "mobBow", "fireBow", "potionBow"), new ArrayList<>());
 
         }
 

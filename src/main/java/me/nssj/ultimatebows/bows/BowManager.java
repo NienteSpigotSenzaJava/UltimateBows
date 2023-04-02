@@ -48,4 +48,8 @@ public final class BowManager {
 
     }
 
+    public ArrayList<Bow> getBows() {
+        return bows;
+    }
+
 }
