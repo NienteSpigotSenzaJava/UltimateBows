@@ -1,8 +1,8 @@
 package me.nssj.ultimatebows.listeners;
 
 import me.nssj.ultimatebows.bows.BowManager;
-
 import me.nssj.ultimatebows.utils.MobType;
+
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;

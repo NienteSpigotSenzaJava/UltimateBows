@@ -4,8 +4,8 @@ import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowManager;
 import me.nssj.ultimatebows.commands.UBowsCommand;
 import me.nssj.ultimatebows.listeners.ArrowListener;
-
 import me.nssj.ultimatebows.utils.Util;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginManager;
@@ -47,14 +47,23 @@ public final class UltimateBows extends JavaPlugin {
 
         getCommand("ubows").setExecutor(new UBowsCommand(bowManager));
 
-        console.sendMessage("UltimateBows was enabled successfully!");
-
+        console.sendMessage("§6╔════════════════════════════════════════════╗");
+        console.sendMessage("§6║§f                                            §6║");
+        console.sendMessage("§6║§f            §bUltimateBows v1.0.1             §6║");
+        console.sendMessage("§6║§f               §aPlugin enabled               §6║");
+        console.sendMessage("§6║§f                                            §6║");
+        console.sendMessage("§6╚════════════════════════════════════════════╝");
     }
 
     @Override
     public void onDisable() {
 
-        console.sendMessage("UltimateBows was disabled!");
+        console.sendMessage("§6╔════════════════════════════════════════════╗");
+        console.sendMessage("§6║§f                                            §6║");
+        console.sendMessage("§6║§f            §bUltimateBows v1.0.1             §6║");
+        console.sendMessage("§6║§f              §cPlugin disabled               §6║");
+        console.sendMessage("§6║§f                                            §6║");
+        console.sendMessage("§6╚════════════════════════════════════════════╝");
 
     }
 

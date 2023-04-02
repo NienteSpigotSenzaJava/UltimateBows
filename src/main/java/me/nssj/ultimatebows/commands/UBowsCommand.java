@@ -2,8 +2,8 @@ package me.nssj.ultimatebows.commands;
 
 import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowManager;
-
 import me.nssj.ultimatebows.utils.Util;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

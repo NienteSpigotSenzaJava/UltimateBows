@@ -7,11 +7,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public final class BowManager {
 
-    private final List<Bow> bows;
+    private final ArrayList<Bow> bows;
 
     public BowManager(final ArrayList<Bow> bows) {
 

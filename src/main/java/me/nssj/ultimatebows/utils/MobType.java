@@ -12,7 +12,6 @@ public enum MobType {
     ZOMBIE_HORSE(EntityType.ZOMBIE_HORSE),
     DONKEY(EntityType.DONKEY),
     MULE(EntityType.MULE),
-    EVOKER_FANGS(EntityType.EVOKER_FANGS),
     EVOKER(EntityType.EVOKER),
     VEX(EntityType.VEX),
     VINDICATOR(EntityType.VINDICATOR),
@@ -30,8 +29,6 @@ public enum MobType {
     SILVERFISH(EntityType.SILVERFISH),
     BLAZE(EntityType.BLAZE),
     MAGMA_CUBE(EntityType.MAGMA_CUBE),
-    ENDER_DRAGON(EntityType.ENDER_DRAGON),
-    WITHER(EntityType.WITHER),
     BAT(EntityType.BAT),
     WITCH(EntityType.WITCH),
     ENDERMITE(EntityType.ENDERMITE),
@@ -51,7 +48,6 @@ public enum MobType {
     RABBIT(EntityType.RABBIT),
     POLAR_BEAR(EntityType.POLAR_BEAR),
     LLAMA(EntityType.LLAMA),
-    LLAMA_SPIT(EntityType.LLAMA_SPIT),
     PARROT(EntityType.PARROT),
     VILLAGER(EntityType.VILLAGER),
     TURTLE(EntityType.TURTLE),
@@ -77,11 +73,7 @@ public enum MobType {
     PIGLIN_BRUTE(EntityType.PIGLIN_BRUTE),
     AXOLOTL(EntityType.AXOLOTL),
     GLOW_SQUID(EntityType.GLOW_SQUID),
-    GOAT(EntityType.GOAT),
-    ALLAY(EntityType.FOX),
-    FROG(EntityType.RABBIT),
-    TADPOLE(EntityType.SALMON),
-    WARDEN(EntityType.UNKNOWN);
+    GOAT(EntityType.GOAT);
 
     private final EntityType entityType;
 
