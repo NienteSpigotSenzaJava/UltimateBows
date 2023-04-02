@@ -5,6 +5,7 @@ import me.nssj.ultimatebows.bows.BowManager;
 import me.nssj.ultimatebows.utils.MobType;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -59,6 +60,10 @@ public final class ArrowListener implements Listener {
             } else if (isBow("mobBow", item)) {
 
                 mobBow(arrow);
+
+            } else if (isBow("lightningBow", item)) {
+
+                lightningBow(arrow);
 
             } else if (isBow("playerBow", item)) {
 
@@ -151,6 +156,13 @@ public final class ArrowListener implements Listener {
     private void mobBow(final Arrow arrow) {
 
         arrow.getWorld().spawnEntity(arrow.getLocation(), MobType.values()[(int) (Math.random() * (MobType.values().length))].getEntityType());
+        arrow.remove();
+
+    }
+
+    private void lightningBow(final Arrow arrow) {
+
+        arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.LIGHTNING);
         arrow.remove();
 
     }
