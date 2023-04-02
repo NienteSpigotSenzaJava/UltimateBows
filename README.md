@@ -17,6 +17,8 @@ These are the different bows (write them like this in the command, for example `
 * ```explosiveBow```
 * ```mobBow```
 * ```lightningBow```
+* ```fireBow```
+* ```potionBow```
 * ```waterBow```
 * ```lavaBow```
 

@@ -1,6 +1,5 @@
 package me.nssj.ultimatebows.utils;
 
-import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionType;
 
 public enum PotionsType {

@@ -2,24 +2,18 @@ package me.nssj.ultimatebows.listeners;
 
 import me.nssj.ultimatebows.bows.BowManager;
 import me.nssj.ultimatebows.utils.MobType;
-
 import me.nssj.ultimatebows.utils.PotionsType;
-import org.bukkit.Location;
-import org.bukkit.World;
+
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionData;
-import org.bukkit.util.Vector;
 
 import java.util.Objects;
 
