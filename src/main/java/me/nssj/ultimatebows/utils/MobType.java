@@ -1,6 +1,6 @@
 package me.nssj.ultimatebows.utils;
 
-import org.bukkit.entity.*;
+import org.bukkit.entity.EntityType;
 
 public enum MobType {
 
@@ -77,7 +77,7 @@ public enum MobType {
 
     private final EntityType entityType;
 
-    MobType(final EntityType entityType) {
+     MobType(final EntityType entityType) {
 
         this.entityType = entityType;
 

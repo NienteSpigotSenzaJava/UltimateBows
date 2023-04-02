@@ -3,16 +3,23 @@ package me.nssj.ultimatebows.listeners;
 import me.nssj.ultimatebows.bows.BowManager;
 import me.nssj.ultimatebows.utils.MobType;
 
+import me.nssj.ultimatebows.utils.PotionsType;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionData;
+import org.bukkit.util.Vector;
 
 import java.util.Objects;
 
@@ -69,6 +76,10 @@ public final class ArrowListener implements Listener {
 
                 arrow.remove();
 
+            } else if (isBow("potionBow", item)) {
+
+                potionBow(arrow);
+
             }
 
         }
@@ -88,6 +99,10 @@ public final class ArrowListener implements Listener {
             if (isBow("playerBow", item)) {
 
                 playerBow(arrow, player);
+
+            } else if (isBow("fireBow", item)) {
+
+                fireBow(arrow);
 
             }
 
@@ -170,6 +185,29 @@ public final class ArrowListener implements Listener {
     private void playerBow(final Arrow arrow, final Player player) {
 
         arrow.addPassenger(player);
+
+    }
+
+    private void fireBow(final Arrow arrow) {
+
+        arrow.remove();
+
+        Fireball fireball = (Fireball) arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.FIREBALL);
+        fireball.setDirection(arrow.getVelocity());
+
+        fireball.setIsIncendiary(true);
+        fireball.setYield(1);
+
+    }
+
+    private void potionBow(final Arrow arrow) {
+
+        arrow.remove();
+
+        ItemStack potion = (ItemStack) arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.SPLASH_POTION);
+        PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
+        potionMeta.setBasePotionData(new PotionData(PotionsType.values()[(int) (Math.random() * (PotionsType.values().length))].getPotionType()));
+        potion.setItemMeta(potionMeta);
 
     }
 
