@@ -1,9 +1,10 @@
 package me.nssj.ultimatebows.listeners;
 
+import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowManager;
 import me.nssj.ultimatebows.utils.MobType;
-import me.nssj.ultimatebows.utils.PotionsType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -12,14 +13,15 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.PotionData;
 
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.UUID;
 
 public final class ArrowListener implements Listener {
 
     private final BowManager bowManager;
+    private final HashMap<UUID, String> arrows = new HashMap<>();
 
     public ArrowListener(final BowManager bowManager) {
 
@@ -38,41 +40,37 @@ public final class ArrowListener implements Listener {
 
             ItemStack item = player.getInventory().getItemInMainHand();
 
-            if (isBow("destructionBow", item)) {
+            if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("destructionBow")) {
 
                 destructionBow(event.getHitBlock(), arrow);
 
-            } else if (isBow("teleportBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("teleportBow")) {
 
                 teleportBow(player, arrow);
 
-            } else if (isBow("explosiveBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("explosiveBow")) {
 
                 explosiveBow(event.getHitBlock(), arrow);
 
-            } else if (isBow("waterBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("waterBow")) {
 
                 waterBow(event.getHitBlock(), arrow);
 
-            } else if (isBow("lavaBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("lavaBow")) {
 
                 lavaBow(event.getHitBlock(), arrow);
 
-            } else if (isBow("mobBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("mobBow")) {
 
                 mobBow(arrow);
 
-            } else if (isBow("lightningBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("lightningBow")) {
 
                 lightningBow(arrow);
 
-            } else if (isBow("playerBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("playerBow")) {
 
                 arrow.remove();
-
-            } else if (isBow("potionBow", item)) {
-
-                potionBow(arrow);
 
             }
 
@@ -89,12 +87,19 @@ public final class ArrowListener implements Listener {
             final Player player = (Player) arrow.getShooter();
 
             final ItemStack item = player.getInventory().getItemInMainHand();
+            final Bow bow = getUltimateBow(item);
 
-            if (isBow("playerBow", item)) {
+            if (bow != null) {
+
+                arrows.put(arrow.getUniqueId(), ChatColor.stripColor(bow.getName().replaceAll("\\s+", "")));
+
+            }
+
+            if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("playerBow")) {
 
                 playerBow(arrow, player);
 
-            } else if (isBow("fireBow", item)) {
+            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("fireBow")) {
 
                 fireBow(arrow);
 
@@ -104,10 +109,19 @@ public final class ArrowListener implements Listener {
 
     }
 
+    private Bow getUltimateBow(final ItemStack item) {
 
-    private boolean isBow(final String name, final ItemStack item) {
+        for (Bow bow : bowManager.getBows()) {
 
-        return Objects.equals(item.getItemMeta().getLore(), bowManager.getBowItem(bowManager.getBow(name)).getItemMeta().getLore());
+            if (Objects.equals(item.getItemMeta().getLore(), bowManager.getBowItem(bow).getItemMeta().getLore())) {
+
+                return bow;
+
+            }
+
+        }
+
+        return null;
 
     }
 
@@ -191,17 +205,6 @@ public final class ArrowListener implements Listener {
 
         fireball.setIsIncendiary(true);
         fireball.setYield(1);
-
-    }
-
-    private void potionBow(final Arrow arrow) {
-
-        arrow.remove();
-
-        ItemStack potion = (ItemStack) arrow.getWorld().spawnEntity(arrow.getLocation(), EntityType.SPLASH_POTION);
-        PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
-        potionMeta.setBasePotionData(new PotionData(PotionsType.values()[(int) (Math.random() * (PotionsType.values().length))].getPotionType()));
-        potion.setItemMeta(potionMeta);
 
     }
 

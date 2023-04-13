@@ -1,7 +1,7 @@
 name: UltimateBows
 version: '${project.version}'
 main: me.nssj.ultimatebows.UltimateBows
-api-version: 1.19
+api-version: 1.13
 authors: [nSSj_]
 description: Add different types of bows into your Minecraft server.
 commands:

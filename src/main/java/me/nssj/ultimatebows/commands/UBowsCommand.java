@@ -2,7 +2,7 @@ package me.nssj.ultimatebows.commands;
 
 import me.nssj.ultimatebows.bows.Bow;
 import me.nssj.ultimatebows.bows.BowManager;
-import me.nssj.ultimatebows.utils.Util;
+import me.nssj.ultimatebows.utils.Utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -55,7 +55,7 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
                     } else {
 
-                        player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "The bow " + args[1] + " doesn't exist!"));
+                        player.sendMessage(Utils.getColorizedText(ChatColor.RED, true, "The bow " + args[1] + " doesn't exist!"));
 
                     }
 
@@ -63,7 +63,7 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
             } else {
 
-                player.sendMessage(Util.getColorizedText(ChatColor.RED, true, "Syntax: /ubows give <bowName>"));
+                player.sendMessage(Utils.getColorizedText(ChatColor.RED, true, "Syntax: /ubows give <bowName>"));
 
             }
 

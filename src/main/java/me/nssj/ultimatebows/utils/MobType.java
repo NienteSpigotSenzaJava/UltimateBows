@@ -23,7 +23,6 @@ public enum MobType {
     ZOMBIE(EntityType.ZOMBIE),
     SLIME(EntityType.SLIME),
     GHAST(EntityType.GHAST),
-    ZOMBIFIED_PIGLIN(EntityType.ZOMBIFIED_PIGLIN),
     ENDERMAN(EntityType.ENDERMAN),
     CAVE_SPIDER(EntityType.CAVE_SPIDER),
     SILVERFISH(EntityType.SILVERFISH),
@@ -57,23 +56,7 @@ public enum MobType {
     PUFFERFISH(EntityType.PUFFERFISH),
     TROPICAL_FISH(EntityType.TROPICAL_FISH),
     DROWNED(EntityType.DROWNED),
-    DOLPHIN(EntityType.DOLPHIN),
-    CAT(EntityType.CAT),
-    PANDA(EntityType.PANDA),
-    PILLAGER(EntityType.PILLAGER),
-    RAVAGER(EntityType.RAVAGER),
-    TRADER_LLAMA(EntityType.TRADER_LLAMA),
-    WANDERING_TRADER(EntityType.WANDERING_TRADER),
-    FOX(EntityType.FOX),
-    BEE(EntityType.BEE),
-    HOGLIN(EntityType.HOGLIN),
-    PIGLIN(EntityType.PIGLIN),
-    STRIDER(EntityType.STRIDER),
-    ZOGLIN(EntityType.ZOGLIN),
-    PIGLIN_BRUTE(EntityType.PIGLIN_BRUTE),
-    AXOLOTL(EntityType.AXOLOTL),
-    GLOW_SQUID(EntityType.GLOW_SQUID),
-    GOAT(EntityType.GOAT);
+    DOLPHIN(EntityType.DOLPHIN);
 
     private final EntityType entityType;
 
