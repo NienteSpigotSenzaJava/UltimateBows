@@ -82,7 +82,7 @@ public final class UBowsCommand implements CommandExecutor, TabCompleter {
 
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
 
-            return StringUtil.copyPartialMatches(args[1], Arrays.asList("all", "destructionBow", "playerBow", "teleportBow", "explosiveBow", "waterBow", "lavaBow", "lightningBow", "mobBow", "fireBow", "potionBow"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[1], Arrays.asList("all", "destructionBow", "playerBow", "teleportBow", "explosiveBow", "waterBow", "lavaBow", "lightningBow", "mobBow", "fireBow"), new ArrayList<>());
 
         }
 
