@@ -9,4 +9,3 @@ commands:
     description: Gives the player a custom bow.
     usage: /<command>
     permission: ultimatebows.give
-

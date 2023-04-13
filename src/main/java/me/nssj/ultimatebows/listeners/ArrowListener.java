@@ -6,6 +6,7 @@ import me.nssj.ultimatebows.utils.MobType;
 
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,39 +39,41 @@ public final class ArrowListener implements Listener {
             Arrow arrow = (Arrow) event.getEntity();
             Player player = (Player) arrow.getShooter();
 
-            ItemStack item = player.getInventory().getItemInMainHand();
+            if (arrows.get(arrow.getUniqueId()) != null) {
 
-            if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("destructionBow")) {
+                if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("destructionBow")) {
 
-                destructionBow(event.getHitBlock(), arrow);
+                    destructionBow(event.getHitBlock(), arrow);
 
-            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("teleportBow")) {
+                } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("teleportBow")) {
 
-                teleportBow(player, arrow);
+                    teleportBow(player, arrow);
 
-            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("explosiveBow")) {
+                } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("explosiveBow")) {
 
-                explosiveBow(event.getHitBlock(), arrow);
+                    explosiveBow(event.getHitBlock(), arrow);
 
-            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("waterBow")) {
+                } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("waterBow")) {
 
-                waterBow(event.getHitBlock(), arrow);
+                    waterBow(event.getHitBlock(), event.getHitBlockFace(), arrow);
 
-            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("lavaBow")) {
+                } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("lavaBow")) {
 
-                lavaBow(event.getHitBlock(), arrow);
+                    lavaBow(event.getHitBlock(), event.getHitBlockFace(), arrow);
 
-            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("mobBow")) {
+                } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("mobBow")) {
 
-                mobBow(arrow);
+                    mobBow(arrow);
 
-            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("lightningBow")) {
+                } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("lightningBow")) {
 
-                lightningBow(arrow);
+                    lightningBow(arrow);
 
-            } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("playerBow")) {
+                } else if (arrows.get(arrow.getUniqueId()).equalsIgnoreCase("playerBow")) {
 
-                arrow.remove();
+                    arrow.remove();
+
+                }
 
             }
 
@@ -91,7 +94,17 @@ public final class ArrowListener implements Listener {
 
             if (bow != null) {
 
-                arrows.put(arrow.getUniqueId(), ChatColor.stripColor(bow.getName().replaceAll("\\s+", "")));
+                String bowName = ChatColor.stripColor(bow.getName().replaceAll("\\s+", "")).toLowerCase();
+
+                if (!player.hasPermission("ultimatebows.use." + bowName)) {
+
+                    player.sendMessage(ChatColor.RED + "You don't have permission to do that.");
+                    arrow.remove();
+                    return;
+
+                }
+
+                arrows.put(arrow.getUniqueId(), bowName);
 
             }
 
@@ -154,22 +167,26 @@ public final class ArrowListener implements Listener {
 
     }
 
-    private void waterBow(final Block hitBlock, final Arrow arrow) {
+    private void waterBow(final Block hitBlock, final BlockFace blockFace, final Arrow arrow) {
 
         if (hitBlock != null) {
 
-            hitBlock.setType(Material.WATER);
+            Block block = hitBlock.getRelative(blockFace);
+
+            block.setType(Material.WATER);
             arrow.remove();
 
         }
 
     }
 
-    private void lavaBow(final Block hitBlock, final Arrow arrow) {
+    private void lavaBow(final Block hitBlock, final BlockFace blockFace, final Arrow arrow) {
 
         if (hitBlock != null) {
 
-            hitBlock.setType(Material.LAVA);
+            Block block = hitBlock.getRelative(blockFace);
+
+            block.setType(Material.LAVA);
             arrow.remove();
 
         }

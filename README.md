@@ -10,17 +10,20 @@ It has only one command which is ```/ubows give <bowName>```, the permission for
 
 ## Bows
 
+
 These are the different bows (write them like this in the command, for example ```/ubows give playerBow```).
-* ```destructionBow```
-* ```playerBow```
-* ```teleportBow```
-* ```explosiveBow```
-* ```mobBow```
-* ```lightningBow```
-* ```fireBow```
-* ```potionBow```
-* ```waterBow```
-* ```lavaBow```
+
+| Bow                  | Permission                            |
+|----------------------|---------------------------------------|
+| ```destructionBow``` | ```ultimatebows.use.destructionbow``` |
+| ```playerBow```      | ```ultimatebows.use.playerbow```      |
+| ```teleportBow```    | ```ultimatebows.use.teleportbow```    |
+| ```explosiveBow```   | ```ultimatebows.use.explosivebow```   |
+| ```mobBow```         | ```ultimatebows.use.mobbow```         |
+| ```lightningBow```   | ```ultimatebows.use.lightningbow```   |
+| ```fireBow```        | ```ultimatebows.use.firebow```        |
+| ```waterBow```       | ```ultimatebows.use.waterbow```       |
+| ```lavaBow```        | ```ultimatebows.use.lavabow```        |
 
 You can also type ```all``` to get every bow, for example ```/ubows give all```.
 
