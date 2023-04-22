@@ -1,4 +1,4 @@
-# 🏹 UltimateBows 1.0.2
+# 🏹 UltimateBows
 
 Adds new bows in your Minecraft server. Basically my first plugin, it will remain active, but I will only update it when there's a bug or a new feature proposal, even I find it useless.
 
