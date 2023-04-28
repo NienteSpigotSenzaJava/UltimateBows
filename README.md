@@ -4,6 +4,16 @@ Adds new bows in your Minecraft server. Basically my first plugin, it will remai
 
 ![Demonstration](./images/demo.gif)
 
+## Build
+
+You can build the project yourself by running
+``` bash
+git clone https://github.com/NienteSpigotSenzaJava/UltimateBows
+cd UltimateBows
+mvn clean package
+```
+you will find the compiled jar file in the ```/target``` directory.
+
 ## Commands
 
 It has only one command which is ```/ubows give <bowName>```, the permission for that command is ```ultimatebows.give```.
