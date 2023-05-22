@@ -38,7 +38,7 @@ You can also type ```all``` to get every bow, for example ```/ubows give all```.
 
 ## Compatibility
 
-The plugin should work from version ```1.13.2``` to version ```1.19.4```.
+The plugin should work from version ```1.13.2``` to version ```1.19.4``` (latest atm).
 
 ## Contributing
 
