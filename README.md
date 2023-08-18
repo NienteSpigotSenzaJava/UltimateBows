@@ -10,7 +10,7 @@ You can build the project yourself by running
 ``` bash
 git clone https://github.com/NienteSpigotSenzaJava/UltimateBows
 cd UltimateBows
-mvn clean package
+mvn package
 ```
 you will find the compiled jar file in the ```/target``` directory.
 
